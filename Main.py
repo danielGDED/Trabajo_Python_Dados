@@ -13,7 +13,7 @@ DADO_D20 = 20
 menu = True
 
 valor_dado = 0
-
+valor_total = 0
 while menu:
     print("1.- Lanzar Dados")
     print("2.- Salir")
@@ -38,8 +38,16 @@ while menu:
         dadosLanzar = int(input("Cuantos dados quieres lanzar"))
         if dadosLanzar > 0:
             for i in range(0, dadosLanzar, 1):
-                e = 1
 
+                # Cambiar por el random
+                valor = 0
+
+                valor_total =+ valor_total
+
+            print("La suma total de los dados es: ")
+            print(valor_total)
+            print("El valor promedio de los dados es: ")
+            print(valor_total/dadosLanzar)
 
         elif dadosLanzar <= 0:
             print("Numero no valido")
