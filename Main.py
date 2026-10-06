@@ -37,6 +37,7 @@ while menu:
     # Entra al menu en el que pides el dado necesario
     if opcion == 1:
         repetir = True
+        #Para evitar que de un valor no disponible y repita hasta uno valido
         while repetir:
             repetir = False
             dado_seleccionado = int(input("Introduzca el dado entre D4, D6, D8, D10, D12, D20 \nSolo introduce el numero de caras: "))
@@ -56,16 +57,28 @@ while menu:
                 case _:
                     console.print("[red]Valor no valido[red]")
                     valido = True
-            
-        dadosLanzar = int(input("Cuantos dados quieres lanzar"))
-        valor_total = 0
 
-        if dadosLanzar > 0:
-            for i in range(0, dadosLanzar, 1):
+        #Para validar que sea una cantidad de dados valida
+        dados_no_valido = True
+        while dados_no_valido:
+            dadosLanzar = int(input("Cuantos dados quieres lanzar"))
+            valor_total = 0
+            if(dadosLanzar >= 0):
+                dados_no_valido = True
+                console.print("[red]Cantidad de dados no valida[red]")
+            elif(dadosLanzar > 0):
+                dados_no_valido = False
+            else:
+                dados_no_valido = True
+                console.print("[red]Dato no valido[red]")
 
-                console.print("El dado [green]" + str(i) + "[/green] ha salido " )
+        #Recorre los dados que se van a lanzan pedidos
+        for i in range(0, dadosLanzar, 1):
 
-                with Live(console=console, refresh_per_second=10) as animacion:
+            console.print("El dado [green]" + str(i) + "[/green] ha salido " )
+
+            #La animacion recorre 14 numeros validos y se queda con el 15, pinta todos en el mismo punto
+            with Live(console=console, refresh_per_second=10) as animacion:
                     repetirAnimacion = 0
                     while repetirAnimacion < 15:
                         valor_animacion = random.randint(1, valor_dado)
@@ -74,25 +87,20 @@ while menu:
                         ))
                         repetirAnimacion += 1
 
+                        #Esto hace que se puedan ver la animacion porque sino saldria todo muy rapido
                         contador_espera = 0
                         while contador_espera < 3000000:
                             contador_espera = contador_espera + 1
-                    
-
+            #Coge el valor del ultimo y lo suma al total
             valor_total += valor_animacion  
 
-            console.print(Panel(
+        console.print(Panel(
                 "La suma total de los dados es: [blue]" + str(valor_total) +
                 "\n[/blue]El valor promedio de los dados es: [blue]" + str(valor_total/dadosLanzar) + "[/blue]"
-            ))
-
-        elif dadosLanzar <= 0:
-            console.print("[red]Numero no valido[red]")
-        else:
-            console.print("[red]Dato no valido[red]")
-
+        ))
 
     elif opcion == 2:
+        #El salir solo cierra el while del menu
         menu = False
     else:
         print("[red]Opcion no valida[red]")
