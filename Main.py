@@ -47,7 +47,7 @@ valor_dado = 0
 while menu:
     console.print(Panel(
         "1.- Lanzar Dados\n"
-        "2.- Historial (En Construccion)"
+        "2.- Historial (En Construccion)\n"
         "3.- Salir"
             ))
     #optiene la opcion entre 1 y 2, cualquier otro valor es invalido
@@ -73,25 +73,25 @@ while menu:
                 case 20:
                     valor_dado = DADO_D20
                 case _:
-                    console.print("[red]Valor no valido[red]")
+                    console.print("[red]Valor no valido[/red]")
                     valido = True
 
         #Para validar que sea una cantidad de dados valida
         dados_no_valido = True
         while dados_no_valido:
-            dadosLanzar = int(input("Cuantos dados quieres lanzar"))
+            dadosLanzar = int(input("Cuantos dados quieres lanzar "))
             valor_total = 0
-            if(dadosLanzar >= 0):
+            if(dadosLanzar <= 0):
                 dados_no_valido = True
-                console.print("[red]Cantidad de dados no valida[red]")
+                console.print("[red]Cantidad de dados no valida[/red]")
             elif(dadosLanzar > 0):
                 dados_no_valido = False
             else:
                 dados_no_valido = True
-                console.print("[red]Dato no valido[red]")
+                console.print("[red]Dato no valido[/red]")
 
         #Recorre los dados que se van a lanzan pedidos
-        for i in range(0, dadosLanzar, 1):
+        for i in range(1, dadosLanzar+1, 1):
 
             console.print("El dado [green]" + str(i) + "[/green] ha salido " )
 
@@ -119,6 +119,7 @@ while menu:
 
     #Aqui iria una opcion de ver estadisticas anteriores, a futuro
     elif opcion == 2:
+        console.print("Opcion en Construccion")
         pass
 
 
@@ -126,7 +127,7 @@ while menu:
         #El salir solo cierra el while del menu
         menu = False
     else:
-        print("[red]Opcion no valida[red]")
+        console.print("[red]Opcion no valida[/red]")
 
 console.print("[green]Cerrando el programa...[green]")
 
