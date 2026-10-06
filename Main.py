@@ -1,3 +1,20 @@
+"""
+El Codigo funciona como un lanzador de dados
+
+Funciona de la siguiente formna:
+
+Le pide al usuario una cantidad de dados de un tipo concreto y te genera el valor de cada uno.
+Realiza una animacion que recorre los numeros simulando un lanzamiento real y se queda con la ultima que sale, como si se hubiese quedado parado en ese.
+Una vez termina de realizar todos los lanzamientos te genera un lista con el total y el promedio de cada lanzamiento
+
+A futuro la opcion 2, tendra todos los lanzamientos ejecutados en esa misma ejecucion del programa, y los enseñara, para comprovar en caso de necesitar una 
+tirada anterior
+
+
+
+"""
+
+
 #Importa random para usarse mas adelante a la hora de asignar valor al los dados
 import random
 
@@ -30,7 +47,8 @@ valor_dado = 0
 while menu:
     console.print(Panel(
         "1.- Lanzar Dados\n"
-        "2.- Salir"
+        "2.- Historial (En Construccion)"
+        "3.- Salir"
             ))
     #optiene la opcion entre 1 y 2, cualquier otro valor es invalido
     opcion = int(input("Elija una opcion(Introduzca el numero de la opcion): "))
@@ -99,7 +117,12 @@ while menu:
                 "\n[/blue]El valor promedio de los dados es: [blue]" + str(valor_total/dadosLanzar) + "[/blue]"
         ))
 
+    #Aqui iria una opcion de ver estadisticas anteriores, a futuro
     elif opcion == 2:
+        pass
+
+
+    elif opcion == 3:
         #El salir solo cierra el while del menu
         menu = False
     else:
