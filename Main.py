@@ -74,7 +74,7 @@ while menu:
                     valor_dado = DADO_D20
                 case _:
                     console.print("[red]Valor no valido[/red]")
-                    valido = True
+                    repetir = True
 
         #Para validar que sea una cantidad de dados valida
         dados_no_valido = True
